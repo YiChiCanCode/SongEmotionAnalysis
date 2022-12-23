@@ -5,7 +5,6 @@ import numpy as np
 from Feature_Extraction import extract_feature
 import random
 
-
 def convert_emojis(emotion):
     # 0: angry 1: happy 2: relaxed 3: sad
     happy = ["&#128515", "&#128516", "&#128518", "&#128522", "&#128513", "&#128512"]
