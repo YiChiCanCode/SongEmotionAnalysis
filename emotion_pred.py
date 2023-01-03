@@ -2,7 +2,7 @@ import pickle
 
 import librosa
 import numpy as np
-from Feature_Extraction import extract_feature
+from Spomoji.songPredict.Feature_Extraction import extract_feature
 import random
 
 def convert_emojis(emotion):
