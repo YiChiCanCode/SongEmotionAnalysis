@@ -229,7 +229,7 @@ def predict(song):
     import pickle
     model = pickle.load(open("/Users/huangyiqi/Desktop/SongEmotionAnalysis/Spomoji/songPredict/knn_model.sav", "rb"))
     prediction = model.predict(feature_set)
-    return prediction
+    return prediction[0]
 
 #view before uploading
 def home(request):
@@ -238,8 +238,16 @@ def home(request):
         if form.is_valid():
             new_uploaded = form.save()
             spomoji = predict(new_uploaded.song)
-            return render(request, 'result.html', {'spomoji':spomoji})
-            #return HttpResponse('successfully uploaded')
+            if spomoji=='sad':
+                return render(request, 'sad.html')
+            elif spomoji=='angry':
+                return render(request, 'angry.html')
+            elif spomoji=='relaxed':
+                return render(request, 'relaxed.html')
+            elif spomoji=='happy':
+                return render(request, 'happy.html')
+            else:
+                return render(request, 'result.html', {'spomoji':spomoji})
     else:
         form = AudioForm
     
